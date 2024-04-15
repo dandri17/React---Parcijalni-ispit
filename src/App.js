@@ -1,13 +1,12 @@
-import FormCard from "./form/FormCard";
-import KitchenSinkExample from "./UserCard.jsx/UserCard";
-import HeaderCard from "./HeaderCard/HeaderCard";
+import FormCard from "./FormCard/FormCard";
+import UserCard from "./UserCard.jsx/UserCard";
+
 
 function App() {
   return (
-    <div>
-      <HeaderCard></HeaderCard>
+    <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
       <FormCard></FormCard>
-      <KitchenSinkExample></KitchenSinkExample>
+      <UserCard></UserCard>
     </div>
     
   );
