@@ -1,61 +1,36 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
-import { useState } from 'react';
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
-
-
-
-function FormCard() {
-
-  const [input, setInput] = useState("");
-
-  const fetchData = (value) => {
-    fetch(`https://api.github.com/users/${value}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('User not found');
-        }
-        return response.json();
-      })
-      .then((json) => {
-        console.log("API response:", json); // Log API response
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
-
-  const showInfo = (value) => {
-    return
-  };
-
-  const handleChange = (value) => {
-    setInput(value)
-    fetchData(value)
-  }
-
-
+function FormCard({fetchData, toggleCardVisibility, cardVisibility}) {
   return (
-    <Card >
-      <Card.Body>
-      <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Enter name of the user:</Form.Label>
-        <Form.Control 
-        type="text" 
-        placeholder="User" 
-        value={input} 
-        onChange={(e) => handleChange(e.target.value)} />
-      </Form.Group>
-     
-      <Button variant="primary" type="submit" onClick={(e) => showInfo(e.target.value)}>
+    <Card style={{maxWidth: 345, display: cardVisibility ? "none" : "block"}}>
+      <CardContent>
+      <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      onChange = {fetchData}
+
+    >
+      <TextField id="filled-basic" label="Filled" variant="filled" />
+    </Box>
+      </CardContent>
+      <CardActions>
+      <Button type="button" variant='contained' color='success' onClick = {toggleCardVisibility}>
         Find user!
-      </Button>{` `}
-    </Form>
-      </Card.Body>
+      </Button>
+      </CardActions>
     </Card>
   );
 }
-
 export default FormCard;
