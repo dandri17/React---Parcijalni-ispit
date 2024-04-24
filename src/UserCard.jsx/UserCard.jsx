@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Button from '@mui/material/Button';
 
-function UserCard({response, cardVisibility, toggleCardVisibility}) {
+function UserCard({user, cardVisibility, toggleCardVisibility}) {
   return (
     <Card style={{  maxWidth: 345 , display: cardVisibility ? "block" : "none" }}>
       <CardActionArea>
@@ -14,32 +14,32 @@ function UserCard({response, cardVisibility, toggleCardVisibility}) {
           component="img"
           height="140"
           image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
+          alt="user profile picture"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             User Name:
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            nešto
+            {user.login}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
             BIO:
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            nešto
+            {user.bio}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
             LOCATION:
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            nešto
+            {user.location}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
             REPOS:
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            nešto
+            {user.repos_url}
           </Typography>
         </CardContent>
       </CardActionArea>
